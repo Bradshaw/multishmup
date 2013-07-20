@@ -2,14 +2,7 @@ local state = gstate.new()
 
 
 function state:init()
-	pnt = {
-		x = 200,
-		y = 400,
-		ix = 0,
-		iy = 0,
-		ox = 0,
-		oy = 0
-	}
+	player = ship.new("player")
 end
 
 
@@ -60,32 +53,14 @@ end
 
 
 function state:update(dt)
+	simulator.update(dt)
 	client:update(dt)
-	pnt.ix = 0
-	pnt.iy = 0
-	if love.keyboard.isDown("left", "q", "a") then
-		pnt.ix = pnt.ix-1
-	end
-	if love.keyboard.isDown("right", "d") then
-		pnt.ix = pnt.ix+1
-	end
-	if love.keyboard.isDown("up", "z", "w") then
-		pnt.iy = pnt.iy-1
-	end
-	if love.keyboard.isDown("down", "s") then
-		pnt.iy = pnt.iy+1
-	end
-	print(pnt.ix,pnt.iy,pnt.ox,pnt.oy)
-	if pnt.ox~=pnt.ix or pnt.oy~=pnt.iy then
-		client:send("mov "..pnt.ix.." "..pnt.iy)
-		pnt.ox = pnt.ix
-		pnt.oy = pnt.iy
-	end
+	player:update(dt)
 end
 
 
 function state:draw()
-	love.graphics.rectangle("fill",pnt.x-3, pnt.y-3, 6, 6)
+	player:draw()
 end
 
 return state

@@ -6,6 +6,9 @@ else
 end
 
 require("global")
+require("tickable")
+require("ship")
+global.MODE = "server"
 
 socket = require("socket")
 clent_mt = {
@@ -14,6 +17,7 @@ clent_mt = {
 	dx = 0,
 	dy = 0
 }
+
 function clent_mt:send(d)
 	self.tcp:send(d.."\n")
 end

@@ -1,15 +1,18 @@
 function love.load(arg)
 	require("log")
+	require("global")
 	font = love.graphics.newImageFont("images/myfont.png",
     " abcdefghijklmnopqrstuvwxyz" ..
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
     "123456789.,!?-+/():;%_`'*__[]\"" ..
     "<>&#=$")
 	love.graphics.setFont(font)
-	require("ticker")
 	gstate = require "gamestate"
 	game = require("game")
 	require("client")
+	require("simulator")
+	require("tickable")
+	require("ship")
 	client:init()
 	gstate.switch(game)
 end

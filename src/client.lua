@@ -1,5 +1,6 @@
 socket = require("socket")
 client = {}
+global.MODE = "client"
 
 function client:init(ip, port)
 	self.tcp = socket.tcp()
@@ -32,7 +33,6 @@ function client:update()
 		local cmd, params = m:match("^(%S*) (.*)")
 		if pnt and cmd == "pos" then
 			local x, y = params:match("^(%S*) (%S*)")
-			print(m)
 			pnt.x = x
 			pnt.y = y
 		end
