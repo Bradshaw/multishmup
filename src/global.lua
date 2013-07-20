@@ -1,0 +1,9 @@
+global = {
+	PLAYERS = 4,
+	NETRATE = 30,
+	GAMERATE = 100,
+	PREFRAMES = 100,
+	POSTFRAMES = 100,
+}
+global.NETTIME = 1/global.NETRATE
+global.GAMETIME = 1/global.GAMERATE

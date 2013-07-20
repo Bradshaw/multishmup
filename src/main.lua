@@ -6,9 +6,9 @@ function love.load(arg)
     "123456789.,!?-+/():;%_`'*__[]\"" ..
     "<>&#=$")
 	love.graphics.setFont(font)
+	require("ticker")
 	gstate = require "gamestate"
 	game = require("game")
-
 	require("client")
 	client:init()
 	gstate.switch(game)
@@ -43,7 +43,7 @@ function love.keypressed(key, uni)
 	gstate.keypressed(key, uni)
 end
 
-function keyreleased(key, uni)
+function love.keyreleased(key, uni)
 	gstate.keyreleased(key)
 end
 
