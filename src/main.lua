@@ -1,6 +1,16 @@
 function love.load(arg)
+	require("log")
+	font = love.graphics.newImageFont("images/myfont.png",
+    " abcdefghijklmnopqrstuvwxyz" ..
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
+    "123456789.,!?-+/():;%_`'*__[]\"" ..
+    "<>&#=$")
+	love.graphics.setFont(font)
 	gstate = require "gamestate"
 	game = require("game")
+
+	require("client")
+	client:init()
 	gstate.switch(game)
 end
 
@@ -39,8 +49,10 @@ end
 
 function love.update(dt)
 	gstate.update(dt)
+	log.update(dt)
 end
 
 function love.draw()
 	gstate.draw()
+	log.draw()
 end

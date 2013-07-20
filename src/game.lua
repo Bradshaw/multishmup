@@ -54,7 +54,7 @@ end
 
 
 function state:update(dt)
-
+	client:update(dt)
 end
 
 
